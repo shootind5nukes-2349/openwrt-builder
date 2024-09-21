@@ -66,7 +66,15 @@ jobs:
           curl -SL https://raw.githubusercontent.com/danpawlik/openwrt-builder/master/configs/common/snapshot-short >> .config
           curl -SL https://raw.githubusercontent.com/danpawlik/openwrt-builder/master/configs/common/lte-5g-modem >> .config
           curl -SL https://raw.githubusercontent.com/danpawlik/openwrt-builder/master/configs/common/community >> .config
-
+          echo "CONFIG_TARGET_ROOTFS_PARTSIZE=2000" >> .config
+          echo "CONFIG_PACKAGE_blockd=y" >> .config
+          echo "CONFIG_PACKAGE_block-mount=y" >> .config
+          echo "CONFIG_PACKAGE_nano=y" >> .config
+          echo "ONFIG_PACKAGE_luci-app-commands=y" >> .config
+          echo "ONFIG_PACKAGE_luci-app-ttyd=y" >> .config
+          echo "ONFIG_PACKAGE_luci-app-ddns=y" >> .config
+          
+          
       - name: Run defconfig
         run: |
           make defconfig
