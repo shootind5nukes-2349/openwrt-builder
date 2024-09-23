@@ -84,7 +84,7 @@ jobs:
           echo "CONFIG_PACKAGE_openssh-server=y" >> .config
           echo "CONFIG_PACKAGE_openssh-sftp-server=y" >> .config
           echo "CONFIG_PACKAGE_openssh-luci-app-mwan3=y" >> .config
-          echo "CONFIG_PACKAGE_mwan3=m" >> .config
+          echo "CONFIG_PACKAGE_mwan3=y" >> .config
           
           
       - name: Run defconfig
