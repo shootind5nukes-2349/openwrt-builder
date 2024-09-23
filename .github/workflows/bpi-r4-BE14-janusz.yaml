@@ -72,9 +72,19 @@ jobs:
           echo "CONFIG_PACKAGE_blockd=y" >> .config
           echo "CONFIG_PACKAGE_block-mount=y" >> .config
           echo "CONFIG_PACKAGE_nano=y" >> .config
-          echo "ONFIG_PACKAGE_luci-app-commands=y" >> .config
-          echo "ONFIG_PACKAGE_luci-app-ttyd=y" >> .config
-          echo "ONFIG_PACKAGE_luci-app-ddns=y" >> .config
+          echo "CONFIG_PACKAGE_luci-app-commands=y" >> .config
+          echo "CONFIG_PACKAGE_luci-app-ttyd=y" >> .config
+          echo "CONFIG_PACKAGE_luci-app-ddns=y" >> .config
+          echo "CONFIG_PACKAGE_luci-proto-wireguard=y" >> .config
+          echo "CONFIG_PACKAGE_ddns-scripts=y" >> .config
+          echo "CONFIG_PACKAGE_ddns-scripts-noip=y" >> .config
+          echo "CONFIG_PACKAGE_mwan3=y" >> .config
+          echo "CONFIG_PACKAGE_luci-app-filebrowser=y" >> .config
+          echo "CONFIG_PACKAGE_luci-app-watchcat=y" >> .config
+          echo "CONFIG_PACKAGE_openssh-server=y" >> .config
+          echo "CONFIG_PACKAGE_openssh-sftp-server=y" >> .config
+          echo "CONFIG_PACKAGE_openssh-luci-app-mwan3=y" >> .config
+          echo "CONFIG_PACKAGE_mwan3=m" >> .config
           
           
       - name: Run defconfig
