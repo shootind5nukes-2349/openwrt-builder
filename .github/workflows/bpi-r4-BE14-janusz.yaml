@@ -76,8 +76,6 @@ jobs:
           echo "CONFIG_PACKAGE_luci-app-attendedsysupgrade=y" >> .config
           echo "CONFIG_PACKAGE_luci-proto-wireguard=y" >> .config
           echo "CONFIG_PACKAGE_luci-mod-dashboard=y" >> .config
-          echo "CONFIG_PACKAGE_ddns-scripts=y" >> .config
-          echo "CONFIG_PACKAGE_ddns-scripts-noip=y" >> .config
           echo "CONFIG_PACKAGE_mwan3=y" >> .config
           echo "CONFIG_PACKAGE_openssh-server=y" >> .config
           echo "CONFIG_PACKAGE_openssh-sftp-server=y" >> .config
@@ -85,7 +83,7 @@ jobs:
           echo "CONFIG_PACKAGE_block-mount=y" >> .config
           echo "CONFIG_PACKAGE_nano=y" >> .config
           echo "CONFIG_PACKAGE_owut=y" >> .config
-          echo "CONFIG_PACKAGE_librespeed-go=y" >> .config
+         
           
       - name: Run defconfig
         run: |
