@@ -9,8 +9,8 @@ ROUTER_IP="${ROUTER_IP=$1}"
 DEVICE="${DEVICE:-$2}"
 FULL_WPAD="${FULL_WPAD:-'true'}"
 INSTALL_BRIDGER=${INSTALL_BRIDGER:-'false'}
-INSTALL_DAWN=${INSTALL_DAWN:-'false'}
-INSTALL_USTEER=${INSTALL_USTEER:-'true'}
+INSTALL_DAWN=${INSTALL_DAWN:-'true'}
+INSTALL_USTEER=${INSTALL_USTEER:-'false'}
 INSTALL_HTTPS_DNS_PROXY=${INSTALL_HTTPS_DNS_PROXY:-'false'}
 INSTALL_DNSCRYPT_PROXY2=${INSTALL_DNSCRYPT_PROXY2:-'true'}
 CRYPTO_LIB=${CRYPTO_LIB:-'openssl'} # wolfssl or openssl; if empty - mbedtls
@@ -45,7 +45,7 @@ if [ -n "$CRYPTO_LIB" ]; then
   if [[ "$CRYPTO_LIB" =~ ^(Wolfssl|wolfssl)$ ]]; then
     FS_FULL_WPAD_PACKAGES="$FS_FULL_WPAD_PACKAGES -libustream-mbedtls -libmbedtls libustream-wolfssl wpad-wolfssl"
   elif [[ "$CRYPTO_LIB" =~ ^(Openssl|openssl)$ ]]; then
-    FS_FULL_WPAD_PACKAGES="$FS_FULL_WPAD_PACKAGES -libustream-mbedtls -libmbedtls libustream-openssl wpad-openssl"
+    FS_FULL_WPAD_PACKAGES="$FS_FULL_WPAD_PACKAGES -libustream-mbedtls -libmbedtls libustream-openssl wpad-openssl libopenssl-devcrypto libopenssl-afalg_sync"
   fi
 fi
 
@@ -62,7 +62,7 @@ if [[ "$INSTALL_DAWN" =~ True|true ]]; then
 fi
 
 if [[ "$INSTALL_USTEER" =~ True|true ]]; then
-    PACKAGES="$PACKAGES usteer luci-app-usteer"
+    PACKAGES="$PACKAGES usteer luci-app-usteer luci-i18n-usteer-pl"
 fi
 
 # additional packages
@@ -83,7 +83,7 @@ if ! [[ "$DEVICE" =~ Main|main ]] && [[ "$INSTALL_BRIDGER" =~ True|true ]]; then
 fi
 
 if [[ "$INSTALL_LANG_PACKAGES" =~ True|true ]]; then
-    PACKAGES="$PACKAGES luci-i18n-firewall-pl luci-i18n-irqbalance-pl luci-i18n-opkg-pl luci-i18n-statistics-pl luci-i18n-usteer-pl luci-i18n-base-pl"
+    PACKAGES="$PACKAGES luci-i18n-firewall-pl luci-i18n-irqbalance-pl luci-i18n-opkg-pl luci-i18n-statistics-pl luci-i18n-base-pl"
 fi
 
 COMMAND="$COMMAND; opkg install $PACKAGES $ADDITIONAL_DRIVERS; /etc/init.d/uhttpd start ; /etc/init.d/uhttpd enable;"
